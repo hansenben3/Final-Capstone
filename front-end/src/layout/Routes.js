@@ -22,6 +22,12 @@ function Routes() {
       <Route exact path = "/reservations/new">
         <NewReservation/>
       </Route>
+      <Route exact path = "/search">
+
+      </Route>
+      <Route exact path = "/tables/new">
+
+      </Route>
       <Route exact path="/reservations">
         <Redirect to={"/dashboard"} />
       </Route>

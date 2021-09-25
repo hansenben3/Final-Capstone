@@ -24,7 +24,7 @@ function NewReservation () {
             people: form.querySelector("#people").value
         }
         console.log(newReservation);
-        // will need to make a post request to this url that goes the server and add the date... then some validation
+        // will need to make a post request to this url that goes the server and add the data... then some validation
         //                      that then leads to the dashboard of said reservation
 
     }
