@@ -16,9 +16,14 @@ function NewReservation () {
         event.preventDefault();
         const form = event.target;
         const newReservation = {
-            first_name: form.querySelector("#first_name"),
-
+            first_name: form.querySelector("#first_name").value,
+            last_name: form.querySelector("#last_name").value,
+            mobile_number: form.querySelector("#mobile_number").value,
+            reservation_date: form.querySelector("#reservation_date").value,
+            reservation_time: form.querySelector("#reservation_time").value,
+            people: form.querySelector("#people").value
         }
+        console.log(newReservation);
         // will need to make a post request to this url that goes the server and add the date... then some validation
         //                      that then leads to the dashboard of said reservation
 
@@ -41,7 +46,7 @@ function NewReservation () {
                 <input id="last_name" type="text" name="last_name" />
                 <br></br>
                 <label for="mobile_number">Mobile Number:</label>
-                <input id="mobile_number" type="number" name="mobile_number" min="10" max="10" />
+                <input id="mobile_number" type="number" name="mobile_number"/>
                 <br></br>
                 <label for="reservation_date">Reservation Date:</label>
                 <input id="reservation_date" type="date" name="reservation_date" />
@@ -50,7 +55,7 @@ function NewReservation () {
                 <input id="reservation_time" type="time" name="reservation_time" />
                 <br></br>
                 <label for="people">People</label>
-                <input id="people" type="text" name="people" />
+                <input id="people" type="number" name="people" min="1" />
                 <br></br>
                 <button type="submit"> 
                     Submit
