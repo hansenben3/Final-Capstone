@@ -1,17 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 
 function NewReservation () {
     const history = useHistory();
-
-    const changeHandler = () => {
-
-        // change handler for the data of the form
-
-        // this will handle state that is send down from parent object
-
-    }
-
+    const [data, setData] = useState(undefined);
+// might need to add a change handler
     const submitHandler = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -23,7 +16,16 @@ function NewReservation () {
             reservation_time: form.querySelector("#reservation_time").value,
             people: form.querySelector("#people").value
         }
-        console.log(newReservation);
+        setData(newReservation);
+        console.log(JSON.stringify(data));
+        fetch("http://localhost:5000/reservations", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then((data) => history.push("/dashboard?" + data));
+
         // will need to make a post request to this url that goes the server and add the data... then some validation
         //                      that then leads to the dashboard of said reservation
 
@@ -39,23 +41,23 @@ function NewReservation () {
     return ( 
         <div>
             <form onSubmit={submitHandler}>
-                <label for="first_name">First Name:</label>
-                <input id="first_name" type="text" name="first_name" />
+                <label>First Name:</label>
+                <input id="first_name" type="text" name="first_name" required/>
                 <br></br>
-                <label for="last_name">Last Name:</label>
-                <input id="last_name" type="text" name="last_name" />
+                <label>Last Name:</label>
+                <input id="last_name" type="text" name="last_name" required/>
                 <br></br>
-                <label for="mobile_number">Mobile Number:</label>
-                <input id="mobile_number" type="number" name="mobile_number"/>
+                <label>Mobile Number:</label>
+                <input id="mobile_number" type="text" name="mobile_number"required/>
                 <br></br>
-                <label for="reservation_date">Reservation Date:</label>
-                <input id="reservation_date" type="date" name="reservation_date" />
+                <label>Reservation Date:</label>
+                <input id="reservation_date" type="date" name="reservation_date" placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required/>
                 <br></br>
-                <label for="reservation_time">Reservation Time:</label>
-                <input id="reservation_time" type="time" name="reservation_time" />
+                <label>Reservation Time:</label>
+                <input id="reservation_time" type="time" name="reservation_time" placeholder="HH:MM" pattern="[0-9]{2}:[0-9]{2}" required/>
                 <br></br>
-                <label for="people">People</label>
-                <input id="people" type="number" name="people" min="1" />
+                <label>People</label>
+                <input id="people" type="number" name="people" min="1" required/>
                 <br></br>
                 <button type="submit"> 
                     Submit
