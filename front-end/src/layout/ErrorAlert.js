@@ -1,5 +1,4 @@
 import React from "react";
-
 /**
  * Defines the alert message to render if the specified error is truthy.
  * @param error
@@ -9,11 +8,24 @@ import React from "react";
  */
 
 function ErrorAlert({ error }) {
-  return (
-    error && (
-      <div className="alert alert-danger m-2">Error: {error.message}</div>
-    )
-  );
+if(error){
+  if(error.message){
+    error = error.message;
+  }
+}
+    return (
+      error && (
+        <div className="alert alert-danger m-2">
+          <h3>
+            Error: {error}
+          </h3>
+          <br></br>
+          <button onClick={() => window.location.reload(false)}>
+            Try Again
+          </button>
+        </div>
+      )
+    );
 }
 
 export default ErrorAlert;

@@ -2,3 +2,62 @@
   background-color: #393a44;
   min-width: 200px;
 }
+
+button {
+  background-color: silver;
+  text-align: center;
+  width: 100px;
+  color:black;
+}
+
+.head {
+  background-color:honeydew;
+  text-align: center;
+}
+
+.reservationContainer {
+  text-align: center;
+}
+
+.reservation {
+  border: 5px;
+  text-align: center;
+  border-style: solid;
+  margin-top: 5px;
+}
+
+.tableContainer {
+  text-align: center;
+}
+
+.table {
+  border: 5px;
+  text-align: center;
+  border-style: solid;
+  margin-top: 5px;
+}
+
+.centered {
+  text-align: center;
+}
+
+body {
+  background-color: rgb(197, 233, 235);
+}
+
+.search {
+  text-align: center;
+}
+
+.renderedSearch {
+  background-color:rgb(112, 152, 212);
+}
+
+.tableContainer div {
+  background-color: ivory;
+}
+
+.reservationContainer div {
+  background-color: rgb(112, 152, 212);
+}
+

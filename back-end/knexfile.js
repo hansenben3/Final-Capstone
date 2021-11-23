@@ -38,9 +38,9 @@ module.exports = {
     pool: { min: 1, max: 5 },
     connection: {
       host: DATABASE_URL_TEST,
-      database: "gykxorow",
-      user: "gykxorow",
-      password: "zaa2D_UxEWMmQ6bPEbKYubnFaUiJoEJz"
+      database: "dvmzwpcy",
+      user: "dvmzwpcy",
+      password: "R05Ln5L5_jBzDDTO-sQj0G_t251xr0_v"
     },
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),
@@ -55,9 +55,9 @@ module.exports = {
     pool: { min: 1, max: 5 },
     connection: {
       host: DATABASE_URL_PREVIEW,
-      database: "gykxorow",
-      user: "gykxorow",
-      password: "zaa2D_UxEWMmQ6bPEbKYubnFaUiJoEJz"
+      database: "lvfezugv",
+      user: "lvfezugv",
+      password: "LyfVWlz8grG3AIGdGjNE8D8oXRUyx82x"
     },
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),
@@ -72,9 +72,9 @@ module.exports = {
     pool: { min: 1, max: 5 },
     connection: {
       host: DATABASE_URL,
-      database: "gykxorow",
-      user: "gykxorow",
-      password: "zaa2D_UxEWMmQ6bPEbKYubnFaUiJoEJz"
+      database: "dqrqyweh",
+      user: "dqrqyweh",
+      password: "1SLw0vgtW6PBTXCZTzDTEG7jxZDXBJp_"
     },
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),

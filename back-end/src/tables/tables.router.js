@@ -6,20 +6,21 @@
 
 const router = require("express").Router();
 const methodNotAllowed = require("../errors/methodNotAllowed");
-const controller = require("./reservations.controller");
+const controller = require("./tables.controller");
 const cors = require("cors");
 
 router.use(cors());
 
+router.route("/:table_id/seat")
+    .put(controller.seat)
+    .delete(controller.finish)
+    .all(methodNotAllowed);
 
-router.route("/:reservation_id")
+router.route("/:table_id")
     .get(controller.read)
-    .put(controller.update)
     .all(methodNotAllowed);
 
-router.route("/:reservation_id/status")
-    .put(controller.updateStatus)
-    .all(methodNotAllowed);
+
 
 router.route("/")
     .get(controller.list)

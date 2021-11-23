@@ -47,6 +47,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2026-12-30",
         reservation_time: "18:00",
         people: 2,
+        status:"booked"
       };
 
       const reservation = await knex("reservations")
@@ -82,6 +83,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -101,6 +103,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -119,6 +122,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -138,6 +142,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -156,6 +161,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -175,6 +181,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -193,6 +200,7 @@ describe("US-08 - Change an existing reservation", () => {
         mobile_number: "800-555-1212",
         reservation_time: "13:30",
         people: 1,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -212,6 +220,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "",
         reservation_time: "13:30",
         people: 1,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -230,6 +239,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "not-a-date",
         reservation_time: "13:30",
         people: 2,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -248,6 +258,7 @@ describe("US-08 - Change an existing reservation", () => {
         mobile_number: "800-555-1212",
         reservation_date: "2025-01-01",
         people: 2,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -266,6 +277,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "",
         people: 2,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -284,6 +296,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "not-a-time",
         people: 2,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -302,6 +315,7 @@ describe("US-08 - Change an existing reservation", () => {
         mobile_number: "800-555-1212",
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
+        status:"booked"
       };
 
       const response = await request(app)
@@ -321,6 +335,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
         people: 0,
+        status:"booked"
       };
 
       const response = await request(app)
@@ -340,6 +355,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
         people: "2",
+        status:"booked"
       };
 
       const response = await request(app)
