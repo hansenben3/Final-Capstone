@@ -50,9 +50,7 @@ function Seat () {
                     history.push({
                         pathname : "/dashboard?date=" + reservation.reservation_date,
                     })
-                })
-                .then(() => {
-                    window.location.reload();
+                    window.location.reload()
                 })
                 return () => abortController.abort();
             }

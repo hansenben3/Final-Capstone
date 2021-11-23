@@ -1,6 +1,6 @@
 import React from "react";
 
-function TableData ({tables, setTable}) {
+function TableData ({tables, setTable, setReservations}) {
     if(tables){
 
         const finish = (event) => {
@@ -10,8 +10,7 @@ function TableData ({tables, setTable}) {
                     method: 'DELETE'
                 })
                 .then(() => {
-                    setTable()
-                    window.location.reload()
+                    window.location.reload();
                 })
             }
             else{

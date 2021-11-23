@@ -105,7 +105,7 @@ function Dashboard() {
           <ErrorAlert error = {reservationsError}/>
         }
       <DashboardData reservations={reservations} setReservations={setReservations}/>
-      <TableData tables = {tables} setTable={setTable}/>
+      <TableData tables = {tables} setTable={setTable} setReservations={setReservations}/>
     </main>
   );
 }

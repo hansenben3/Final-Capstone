@@ -9,7 +9,7 @@ if(reservations){
 
     const cancelReservationHandler = (event) => {
         //event.preventDefault();
-        window.confirm("Do you want to cancel this reservation?")
+        if(window.confirm("Do you want to cancel this reservation?")){
         fetch(`http://localhost:5000/reservations/${event.target.id}/status`, {
             method : "PUT",
             headers: {
@@ -20,12 +20,26 @@ if(reservations){
         .then(() => window.location.reload())
         setReservations();
     }
+    }
 
         // maps the reservations in the correct format and then returns them in a fragment that the dashboard displays
         const a = reservations.map((reservation) => {
             formatReservationDate(reservation);
             formatReservationTime(reservation);
             const id = reservation.reservation_id;
+            if(reservation.status === "cancelled") {
+                return (
+                    <>
+                    </>
+                )
+            }
+            else if (reservation.status === "finished") {
+                return (
+                    <>
+                    </>
+                )
+            }
+            else{
             return (
                 <div key ={id} className="reservation">
                     <h2>Time: {reservation.reservation_time} Date: {reservation.reservation_date}</h2>
@@ -34,7 +48,7 @@ if(reservations){
                     </h3>
                     <p>Phone Number : {reservation.mobile_number}</p>
                     <p>Party Size : {reservation.people}</p>
-                    <p> Status : {reservation.status}</p>
+                    <p  data-reservation-id-status={reservation.reservation_id} > Status : {reservation.status}</p>
                     <br></br>
                     {reservation.status === "booked" ? 
                     <a href={`/reservations/${reservation.reservation_id}/seat`}>
@@ -63,6 +77,7 @@ if(reservations){
                     }
                 </div>
             )
+            }
         })
 
         return (

@@ -116,7 +116,6 @@ describe("US-06 - Reservation status - E2E", () => {
       page.on("dialog", async (dialog) => {
         await dialog.accept();
       });
-
       await page.click(finishButtonSelector);
 
       await page.waitForResponse((response) => {
