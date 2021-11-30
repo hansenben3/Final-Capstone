@@ -70,8 +70,12 @@ function Seat () {
         if(Array.isArray(errors)) {
             return ( 
                 <div>
-                    {errors.map((error) => {
-                        return <ErrorAlert error = {error} />
+                    {errors.map((e) => {
+                        return (
+                            <div key = {errors.findIndex((element) => element === e)} className="alert alert-danger">
+                            <ErrorAlert error = {e} />
+                            </div>
+                        )
                     })}
                 </div>
             )

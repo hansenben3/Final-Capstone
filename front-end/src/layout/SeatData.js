@@ -35,11 +35,24 @@ function SeatData ({table, reservation_id, reservation, handler}) {
     }
 
     if(errors){
-        return (
-            <div>
+        if(Array.isArray(errors)) {
+            return ( 
+                <div>
+                    {errors.map((e) => {
+                        return (
+                            <div key = {errors.findIndex((element) => element === e)} className="alert alert-danger">
+                            <ErrorAlert error = {e} />
+                            </div>
+                        )
+                    })}
+                </div>
+            )
+        }
+        else{
+            return (
                 <ErrorAlert error = {errors} />
-            </div>
-        )
+            )
+        }
     }
 
     if(table){

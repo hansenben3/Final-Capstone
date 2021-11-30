@@ -4,7 +4,7 @@ import ErrorAlert from "./ErrorAlert";
 
 function NewTable () {
     const history = useHistory();
-    const [error, setError] = useState(null);
+    const [errors, setErrors] = useState(null);
 
     const cancelHandler = (event) => {
         event.preventDefault();
@@ -33,24 +33,23 @@ function NewTable () {
         .then((result) => {
             history.push("/dashboard");
         })
-        .catch(setError);
+        .catch(setErrors);
     }
 
-    if( error ) {
+    if( errors ) {
         return ( 
             <div>
                 {
-                    Array.isArray(error) ? 
-                    error.map((e) => {
+                    Array.isArray(errors) ? 
+                    errors.map((e) => {
                         return (
-                            <>
+                            <div key = {errors.findIndex((element) => element === e)} className="alert alert-danger">
                             <ErrorAlert error = {e} />
-                            </>
+                            </div>
                         )
-                        
                     }) 
                     :
-                    <ErrorAlert error = {error}/>
+                    <ErrorAlert error = {errors}/>
                 }
             </div>
         )

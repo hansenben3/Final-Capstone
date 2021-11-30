@@ -2,16 +2,16 @@ import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import ErrorAlert from "./ErrorAlert";
 import compareMain from "../utils/compare-main";
+import Form from "./Form";
 
 function NewReservation () {
     const history = useHistory();
-    const [error, setError] = useState(null);
+    const [errors, setErrors] = useState(null);
 // might need to add a change handler
     const submitHandler = (event) => {
         event.preventDefault();
         const form = event.target;
         const newReservation = {
-            data : {
             first_name: form.querySelector("#first_name").value,
             last_name: form.querySelector("#last_name").value,
             mobile_number: form.querySelector("#mobile_number").value,
@@ -19,11 +19,10 @@ function NewReservation () {
             reservation_time: form.querySelector("#reservation_time").value,
             people: parseInt(form.querySelector("#people").value),
             status: "booked"
-            }
         }
         const dateTimeValidationErrors = compareMain(newReservation.data.reservation_time, newReservation.data.reservation_date);
         if ( dateTimeValidationErrors.length > 0 ) {
-            setError(dateTimeValidationErrors);
+            setErrors(dateTimeValidationErrors);
         }
         else{
             const abortController = new AbortController();
@@ -38,7 +37,7 @@ function NewReservation () {
             .then(() => {
                 history.push("/dashboard?date=" + newReservation.data.reservation_date);
             })
-            .catch(setError);
+            .catch(setErrors);
             return () => abortController.abort();
         }
     }
@@ -48,21 +47,21 @@ function NewReservation () {
         history.goBack();
     }
 
-    if( error ) {
+    if( errors ) {
         return ( 
             <div>
                 {
-                    Array.isArray(error) ? 
-                    error.map((e) => {
+                    Array.isArray(errors) ? 
+                    errors.map((e) => {
                         return (
-                            <div className="alert alert-danger">
+                            <div key = {errors.findIndex((element) => element === e)} className="alert alert-danger">
                             <ErrorAlert error = {e} />
                             </div>
                         )
                         
                     }) 
                     :
-                    <ErrorAlert error = {error}/>
+                    <ErrorAlert error = {errors}/>
                 }
             </div>
         )
@@ -73,33 +72,7 @@ function NewReservation () {
 // cancel button that returns the use to the previous page
     return ( 
         <div className="head">
-            <form onSubmit={submitHandler}>
-                <label>First Name:</label>
-                <input id="first_name" type="text" name="first_name" required/>
-                <br></br>
-                <label>Last Name:</label>
-                <input id="last_name" type="text" name="last_name" required/>
-                <br></br>
-                <label>Mobile Number:</label>
-                <input id="mobile_number" type="text" name="mobile_number" required/>
-                <br></br>
-                <label>Reservation Date:</label>
-                <input id="reservation_date" type="date" name="reservation_date" placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required/>
-                <br></br>
-                <label>Reservation Time:</label>
-                <input id="reservation_time" type="time" name="reservation_time" placeholder="HH:MM" pattern="[0-9]{2}:[0-9]{2}" required/>
-                <br></br>
-                <label>People</label>
-                <input id="people" type="number" name="people" min="1" required/>
-                <br></br>
-                <button type="submit"> 
-                    Submit
-                </button>
-                <button onClick={cancelHandler}>
-                    Cancel
-                </button>
-
-            </form>
+            <Form submitHandler = {submitHandler} cancelHandler = {cancelHandler}/>
         </div>
     )
 }
