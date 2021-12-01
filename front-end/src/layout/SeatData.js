@@ -34,25 +34,24 @@ function SeatData ({table, reservation_id, reservation, handler}) {
         return () => abortController.abort();
     }
 
-    if(errors){
-        if(Array.isArray(errors)) {
-            return ( 
-                <div>
-                    {errors.map((e) => {
+    if( errors ) {
+        return ( 
+            <div className="alert alert-danger">
+                {
+                    Array.isArray(errors) ? 
+                    errors.map((e) => {
                         return (
-                            <div key = {errors.findIndex((element) => element === e)} className="alert alert-danger">
+                            <div key = {errors.findIndex((element) => element === e)}>
                             <ErrorAlert error = {e} />
                             </div>
                         )
-                    })}
-                </div>
-            )
-        }
-        else{
-            return (
-                <ErrorAlert error = {errors} />
-            )
-        }
+                        
+                    }) 
+                    :
+                    <ErrorAlert error = {errors} />
+                }
+            </div>
+        )
     }
 
     if(table){

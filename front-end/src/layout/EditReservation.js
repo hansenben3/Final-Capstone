@@ -58,27 +58,24 @@ function EditReservation () {
         history.goBack();
     }
 
-    if(errors) {
-        if(Array.isArray(errors)){
-            return (
-                <div>
-                    {
-                        errors.map((e) => {
-                            return (
-                                <div key = {errors.findIndex((element) => element === e)} className="alert alert-danger">
-                                <ErrorAlert error = {e} />
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            )
-        }
-        else{
-            return (
-                <ErrorAlert error = {errors} />
-            )
-        }
+    if( errors ) {
+        return ( 
+            <div className="alert alert-danger">
+                {
+                    Array.isArray(errors) ? 
+                    errors.map((e) => {
+                        return (
+                            <div key = {errors.findIndex((element) => element === e)}>
+                            <ErrorAlert error = {e} />
+                            </div>
+                        )
+                        
+                    }) 
+                    :
+                    <ErrorAlert error = {errors} />
+                }
+            </div>
+        )
     }
 
     if(reservation) { 

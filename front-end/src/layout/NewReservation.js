@@ -12,13 +12,15 @@ function NewReservation () {
         event.preventDefault();
         const form = event.target;
         const newReservation = {
-            first_name: form.querySelector("#first_name").value,
-            last_name: form.querySelector("#last_name").value,
-            mobile_number: form.querySelector("#mobile_number").value,
-            reservation_date: form.querySelector("#reservation_date").value,
-            reservation_time: form.querySelector("#reservation_time").value,
-            people: parseInt(form.querySelector("#people").value),
-            status: "booked"
+            data:{
+                first_name: form.querySelector("#first_name").value,
+                last_name: form.querySelector("#last_name").value,
+                mobile_number: form.querySelector("#mobile_number").value,
+                reservation_date: form.querySelector("#reservation_date").value,
+                reservation_time: form.querySelector("#reservation_time").value,
+                people: parseInt(form.querySelector("#people").value),
+                status: "booked"
+            }
         }
         const dateTimeValidationErrors = compareMain(newReservation.data.reservation_time, newReservation.data.reservation_date);
         if ( dateTimeValidationErrors.length > 0 ) {
@@ -49,19 +51,19 @@ function NewReservation () {
 
     if( errors ) {
         return ( 
-            <div>
+            <div className="alert alert-danger">
                 {
                     Array.isArray(errors) ? 
                     errors.map((e) => {
                         return (
-                            <div key = {errors.findIndex((element) => element === e)} className="alert alert-danger">
+                            <div key = {errors.findIndex((element) => element === e)}>
                             <ErrorAlert error = {e} />
                             </div>
                         )
                         
                     }) 
                     :
-                    <ErrorAlert error = {errors}/>
+                    <ErrorAlert error = {errors} />
                 }
             </div>
         )
